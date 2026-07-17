@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday, My Love</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+    
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background-color: #F6EDE3;
+  background-image: url("bg1.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+.page {
+width: 90%;
+    max-width: 500px;
+    min-width: 300px;
+    height: auto;
+    max-height: 90vh;
+    background-color: rgb(236 230 230 / 50%);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    text-align: center;
+    padding: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(139, 58, 58, 0.35);
+    border: 1px solid rgba(184, 92, 92, 0.3);
+    overflow-y: auto;
+    box-sizing: border-box;
+}
+
+#page1 {
+  display: flex;
+}
+
+.page-content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+h1, h2 {
+color: #611818;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(184, 92, 92, 0.3);
+    font-weight: bolder;
+    letter-spacing: 0px;
+}
+
+.melody-character {
+  width: 250px;
+  margin-bottom: 30px;
+  filter: drop-shadow(0 5px 10px rgba(139, 58, 58, 0.4));
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.chat-box {
+    background-color: #d0d0d0;
+    border: 3px solid #9a3e3e;
+    border-radius: 15px;
+    padding: 20px;
+    width: 90%;
+    max-width: 400px;
+    margin-bottom: 30px;
+    position: relative;
+    box-shadow: 0 5px 15px rgba(154, 63, 63, 0.25);
+}
+
+.chat-box:after {
+  content: '';
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-top: 15px solid #B85C5C;
+}
+
+.button-container {
+  display: flex;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.btn {
+    padding: 12px 32px;
+    background-color: #750c0c;
+    color: #cdcdcd;
+    font-weight: bolder;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 20px;
+    transition: all 0.3s;
+    box-shadow: 0 4px 8px rgba(139, 58, 58, 0.3);
+    font-weight: bolder;
+    letter-spacing: 0.5px;
+}
+
+.btn:hover {
+  background-color: #A54848;
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(139, 58, 58, 0.4);
+}
+
+.message-text {
+    white-space: pre-line;
+    text-align: justify;
+    line-height: 1.6;
+    color: #a33131;
+    background-color: rgba(218, 218, 218, 0.1);
+    padding: 15px;
+    border-radius: 12px;
+    font-weight: bold;
+    border: 1px solid #803030;
+}
+
+.girlfriend-photo {
+  width: 325px;
+  border-radius: 15px;
+  margin-bottom: 20px;
+  border: 3px solid #B85C5C;
+  box-shadow: 0 8px 20px rgba(139, 58, 58, 0.3);
+  transition: transform 0.3s;
+}
+
+.girlfriend-photo:hover {
+  transform: scale(1.03);
+}
+
+.hearts {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.heart {
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  background-color: #672b2b;
+  transform: rotate(45deg);
+  opacity: 0;
+  animation: float 4s ease-in-out infinite;
+}
+
+.heart:before,
+.heart:after {
+  content: '';
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  background-color: #672b2b;
+  border-radius: 50%;
+}
+
+.heart:before {
+  top: -7.5px;
+  left: 0;
+}
+
+.heart:after {
+  left: -7.5px;
+  top: 0;
+}
+
+.heart:nth-child(odd) {
+  background-color: #cb4747;
+}
+
+.heart:nth-child(odd):before,
+.heart:nth-child(odd):after {
+  background-color: #cb4747;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0) rotate(45deg);
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(-100px) rotate(45deg);
+    opacity: 0;
+  }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+  </style>
+</head>
+<body>
+  <audio id="bgMusic" src="lagu-kamu.mp3" loop></audio>
+  <div id="page1" class="page">
+    <div class="page-content">
+      <img src="icons.png" alt="My Melody" class="melody-character">
+      <h1>Happy 13th Mensiverary, sayang</h1>
+      <div class="hearts" id="hearts1"></div>
+      <button class="btn" onclick="showPage('page2')">Continue</button>
+    </div>
+  </div>
+  <div id="page2" class="page">
+    <div class="page-content">
+      <div class="chat-box">
+        <h2>Open this messages, please</h2>
+      </div>
+      <div class="button-container">
+        <button class="btn" onclick="showPage('page5')">Yes</button>
+        <button class="btn" onclick="showPage('page3')">No</button>
+      </div>
+      <div class="hearts" id="hearts2"></div>
+    </div>
+  </div>
+
+  <div id="page3" class="page">
+    <div class="page-content">
+      <div class="chat-box">
+        <h2>You press a no, so you don't love me??</h2>
+      </div>
+      <div class="button-container">
+        <button class="btn" onclick="showPage('page4')">Sorry, I do</button>
+      </div>
+      <div class="hearts" id="hearts3"></div>
+    </div>
+  </div>
+
+  <div id="page4" class="page">
+    <div class="page-content">
+      <div class="chat-box">
+        <h2>Press Yes to proceed to the message</h2>
+      </div>
+      <div class="button-container">
+        <button class="btn" onclick="showPage('page5')">Yes</button>
+      </div>
+      <div class="hearts" id="hearts4"></div>
+    </div>
+  </div>
+
+  <div id="page5" class="page">
+    <div class="page-content">
+      <img src="pict1.jpg" alt="Girlfriend's Photo" class="girlfriend-photo">
+      <div class="message-text">
+        <p>happy 13th mensive, hubby 🤍
+
+          1 year and 1 month alreadyyy yayayyyy! honestly? wifey still look at us sometimes and think, “wow… we really made it this far together.”
+before hubby, wifey was so used to handling everything alone. always trying to act strong, always trying to survive things quietly, always thinking that needing comfort would only make wifey look weak. first child things, broken home things, independent final boss things HAHAHA :(
+because of that, wifey genuinely thought relationships would eventually feel exhausting. especially because wifey was so used to depending only on herself.
+but then hubby came into wifey’s life so softlyyyy anddd somehow, little by littleee, hubby changed so many things without even realizing itttt. hubby taught wifey how to open up, how to stop bottling everything inside, how to actually let someone stay and comfort wifey instead of pretending everything is okay all the time.
+and honestly… that means so much more than hubby could ever understand.
+even after all this time, hubby still makes wifey feel loved in the smallest ways possible. the random checkups, the sleepy calls, the little jealous moments, the way hubby notices tiny changes in wifey’s mood immediately, the way hubby always tries to calm wifey down gently :(
+it all feels so warm. so safe. so comforting.
+
+and that’s why wifey can never agree whenever hubby says “someone else could love wifey better.” because love isn’t about finding someone “better.” it’s about finding someone who feels right for your heart.
+and hubby feels right for wifeyyy always!! even our relationship never truly feels like ldr to wifey, because somehow hubby always knows how to stay close to wifey’s heart no matter how far the distance is. whenever wifey talks to hubby after a tiring day, it genuinely feels like coming back to the softest place ever :(
+and please remember this forever, sayangggku hubby deserve love so, soooooo sooo muchhhhh!
+
+wifey knows hubby keeps thinking you’ve changed because now you’re softer, more clingy, more emotional, more open about your feelings. but honestly? wifey loves this version of hubby even more deeply than beforee!
+because now wifey gets to see every side of hubbyyyy🫂🫂🫂🫂🫂not only the calm and strong side, but also the tired side, the overthinking side, the clingy side, the side that just wants to be loved and held gently. and wifey wants all of them. not only the easy parts.
+so if hubby wants reassurance, ask for it. if hubby wants to cling more, cling more. if hubby wants to complain, then complain. if hubby gets jealous, just tell wifey honestly.
+because loving hubby has never felt tiring for wifey, neverrrr!!
+
+and honestly, seeing hubby become softer doesn’t make wifey think hubby is weak at all. if anything, it just makes wifey want to protect and love hubby even more :(
+because to wifey, hubby isn’t just “home” hubby is mansion! the safest, warmest, biggest place wifey could ever come back to after a long tiring dayyyyy huftttt🫂🫂🫂🫂
+thank you for staying this long with wifey. thank you for loving wifey this gently. thank you for existing in wifey’s life and making it feel softer than before.
+soooo, happy 13th mensive, my sweetest hubbyy, let’s stay togetherrr foreeeveeerrr 🫶🏻🫶🏻🫶🏻🫶🏻🫶🏻🤍🤍🤍🤍
+i love youuuu sealaam semestaa hubbyyy 🤍🤍🤍🤍🤍🫂🫂🫂🫂🫂🫂🫂</p>
+⠀⠀      </div>
+      <div class="hearts" id="hearts5"></div>
+    </div>
+  </div>
+
+  <script>
+    // Function to show a specific page and hide others
+    const bgMusic = document.getElementById("bgMusic");
+
+    function showPage(pageId) {
+
+      // Hide all pages
+      document.querySelectorAll('.page').forEach(page => {
+        page.style.display = 'none';
+      });
+
+      // Show selected page
+      document.getElementById(pageId).style.display = 'flex';
+
+      // Kalau pindah ke page2 → play musik
+      if (pageId === "page2") {
+        bgMusic.play().catch(err => {
+          console.log("Autoplay dicegah browser:", err);
+        });
+      }
+      
+      // Show the selected page with a fade-in effect
+      const selectedPage = document.getElementById(pageId);
+      selectedPage.style.display = 'flex';
+      selectedPage.style.opacity = '0';
+      
+      setTimeout(() => {
+        selectedPage.style.transition = 'opacity 0.5s ease';
+        selectedPage.style.opacity = '1';
+      }, 100);
+      
+      // Create floating hearts for the current page
+      createHearts(pageId);
+    }
+
+    // Function to create floating hearts
+    function createHearts(pageId) {
+      const heartsContainer = document.getElementById('hearts' + pageId.substring(4));
+      heartsContainer.innerHTML = '';
+      
+      for (let i = 0; i < 80; i++) {
+        const heart = document.createElement('div');
+        heart.className = 'heart';
+        heart.style.left = Math.random() * 100 + '%';
+        heart.style.bottom = Math.random() * 100 + '%';
+        heart.style.opacity = 0;
+        heart.style.animationDelay = Math.random() * 5 + 's';
+        heart.style.transform = `scale(${0.5 + Math.random()}) rotate(45deg)`;
+        heartsContainer.appendChild(heart);
+      }
+    }
+
+    // Add confetti effect to the final message
+    function addConfetti() {
+      const confettiContainer = document.createElement('div');
+      confettiContainer.style.position = 'absolute';
+      confettiContainer.style.width = '100%';
+      confettiContainer.style.height = '100%';
+      confettiContainer.style.top = '0';
+      confettiContainer.style.left = '0';
+      confettiContainer.style.pointerEvents = 'none';
+      confettiContainer.style.zIndex = '-1';
+      
+      document.getElementById('page5').appendChild(confettiContainer);
+      
+      for (let i = 0; i < 50; i++) {
+        const confetti = document.createElement('div');
+        confetti.style.position = 'absolute';
+        confetti.style.width = '10px';
+        confetti.style.height = '10px';
+        confetti.style.backgroundColor = i % 2 === 0 ? '#672b2b' : '#ffffff';
+        confetti.style.borderRadius = i % 3 === 0 ? '50%' : '0';
+        confetti.style.top = '-10px';
+        confetti.style.left = Math.random() * 100 + '%';
+        confetti.style.opacity = Math.random() * 0.7 + 0.3;
+        confetti.style.animation = `confettiFall ${Math.random() * 3 + 2}s linear infinite`;
+        confetti.style.animationDelay = Math.random() * 5 + 's';
+        
+        const keyframes = `
+          @keyframes confettiFall {
+            0% { transform: translateY(-10px) rotate(0deg); }
+            100% { transform: translateY(${window.innerHeight}px) rotate(360deg); }
+          }
+        `;
+        
+        const styleSheet = document.createElement('style');
+        styleSheet.innerText = keyframes;
+        document.head.appendChild(styleSheet);
+        
+        confettiContainer.appendChild(confetti);
+      }
+    }
+
+    // Initialize hearts on the first page
+    window.onload = function() {
+      createHearts('page1');
+      
+      // Add event listener for the final page
+      document.querySelector('button[onclick="showPage(\'page5\')"]').addEventListener('click', function() {
+        setTimeout(addConfetti, 100);
+      });
+    };
+  </script>
+</body>
+
+</html>
+
+
+
+
